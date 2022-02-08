@@ -13,5 +13,9 @@ export default {
   async getIndex() {
     const response = await axios.get(url + 'admin/data');
     return response.data;
+  },
+   async createProduct() {
+    const response = await axios.get(url + 'create-product');
+    return response.data;
   }
 };

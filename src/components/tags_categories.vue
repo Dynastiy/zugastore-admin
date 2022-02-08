@@ -277,7 +277,7 @@ export default {
       tag_id: '',
       new_tag_name: "",
       new_category_name: '',
-                   new_icon_image: null,
+      new_icon_image: null,
       tag_name: "",
       category_name: "",
       icon_image: null,
@@ -347,8 +347,11 @@ export default {
         )
                 });
     },
-    editTagModal2(tag){
-      this.tag_id = tag.id
+    async editTagModal2(tag){
+      this.tag_id = tag.id;
+      let res = await  axios.get(`${this.baseUrl}find-tag/${tag.id}`);
+      console.log(res.data.tag);
+      this.new_tag_name = res.data.tag.name
       console.log(this.tag_id);
       this.editTagModal = !this.editTagModal
     },
@@ -411,9 +414,12 @@ export default {
         )
                 });
     },
-    editCategoryModal2(category){
+    async editCategoryModal2(category){
       this.category_id = category.id
-      console.log(this.tag_id);
+      let res = await  axios.get(`${this.baseUrl}find-category/${category.id}`);
+      console.log(res.data.category);
+      this.new_category_name = res.data.category.category_name
+      console.log(this.category_id);
       this.editCategoryModal = !this.editCategoryModal
     },
     editCategory(){
@@ -456,7 +462,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.2);
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -471,7 +477,7 @@ export default {
 position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.2);
   width: 100%;
   min-height: 100vh;
   display: flex;

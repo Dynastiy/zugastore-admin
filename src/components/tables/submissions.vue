@@ -35,6 +35,17 @@
                 </td>
                 <td>
                   <button class="view-more-button">View More</button>
+                  <div class="btn-group dropleft ml-2">
+                      <button type="button" class="more__icon" data-toggle="dropdown" aria-expanded="false">
+                        <!-- Dropleft -->
+                        <ion-icon name="more"></ion-icon>
+                      </button>
+                      <div class="dropdown-menu">
+                        
+                        <a class="dropdown-item"    @click="decline(product)">Decline</a>
+                         <a class="dropdown-item"   @click="approve(product)">Approve</a>
+                      </div>
+                    </div>
                 </td>
               </tr>
             </tbody>
@@ -60,19 +71,29 @@ export default {
   },
   methods: {
     async getProducts() {
-      // try {
-        // console.log(this.$route.query.status);
-        // let queryName = this.$route.query.status
-        // this.queryTitle = queryName;
         const res = await axios.get(`${this.baseUrl}admin/get-submissions`);
         console.log(res.data.pending_apps);
         this.products = res.data.pending_apps;
         if(res.data.pending_apps.length === 0){
           this.none_app = true;
         }
-
-// res.data.args; 
     },
+    approve(product) {
+        let payload = { status: "approved"};
+        axios.post(`${this.baseUrl}admin/update-product/${product.id}`, payload)
+                .then((response) => {
+                    console.log(response);
+                   this.getProducts();
+                });
+      },
+      decline(product) {
+        let payload = { status: "declined"};
+        axios.post(`${this.baseUrl}admin/update-product/${product.id}`, payload)
+                .then((response) => {
+                    console.log(response);
+                   this.getProducts();
+                });
+      },
   },
   async created() {
     this.getProducts();
