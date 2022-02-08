@@ -15,7 +15,7 @@ export default {
     return response.data;
   },
    async createProduct() {
-    const response = await axios.post(url + 'create-product');
+    const response = await axios.post(url + 'admin/create-product');
     return response.data;
   },
   async getTags() {
