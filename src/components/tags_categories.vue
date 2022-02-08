@@ -292,7 +292,6 @@ export default {
     handleFileUpload2() {
       var input = event.target;
         this.new_icon_image = input.files[0];
-      // this.new_icon_image = this.$refs.file2.files[1];
       console.log(this.new_icon_image);
     },
     async getCategories() {
@@ -417,9 +416,9 @@ export default {
     async editCategoryModal2(category){
       this.category_id = category.id
       let res = await  axios.get(`${this.baseUrl}find-category/${category.id}`);
-      console.log(res.data.category);
+      // console.log(res.data.category);
       this.new_category_name = res.data.category.category_name
-      console.log(this.category_id);
+      // console.log(this.category_id);
       this.editCategoryModal = !this.editCategoryModal
     },
     editCategory(){
@@ -430,15 +429,17 @@ export default {
                 .then((response) => {
                   console.log(response);
                    this.new_category_name = '';
-                   this.new_icon_image = null
+                   this.new_icon_image = null;
+                    this.getCategories();
+                    this.editCategoryModal = !this.editCategoryModal;
                    Swal.fire(
           'Success!',
           'Category Updated!',
           'success'
         )
                 });
-                this.CategoryModal = !this.CategoryModal;
-                this.getCategories();
+                
+               
     },
   },
   created() {

@@ -5,15 +5,19 @@
         </div>
         <form action="" @submit.prevent="submit">
             <div  class="row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="">Name of App</label> 
                     <input type="text" name="" id="" v-model="name" class="form-control" placeholder="Enter App Name">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="">Name of Developer</label> 
-                    <input type="text" name="" id="" v-model="developer" class="form-control" placeholder="" readonly>
+                    <input type="text" name="" id="" v-model="developer" class="form-control" placeholder="">
                 </div>
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
+                    <label for="">Company Name</label> 
+                    <input type="text" name="" id="" v-model="company_name" class="form-control" placeholder="">
+                </div>
+                <div class="col-md-3 mb-3">
                     <label for="">Platform</label> <br>
                     <select v-model="platform" id="select-platform" class="form-control">
                         <option value="" > --- </option>
@@ -110,6 +114,7 @@ export default {
             platform: '',
             tag_id: '',
             category_id: '',
+            company_name: '',
             app_icon: null,
             app_file: null,
             phote_one: null,
@@ -191,6 +196,7 @@ export default {
             formData.append("photo_two", this.photo_two);
             formData.append("photo_three", this.photo_three);
             formData.append("photo_four", this.photo_four);
+            formData.append("company_name", this.company_name)
             let res = await helpers.createProduct(formData);
             console.log(res);
             Swal.fire(
@@ -206,6 +212,7 @@ export default {
             this.platform= "";
             this.tag_id = '';
             this.category_id = '';
+            this.company_name = '';
             this.app_icon = '';
             this.app_file = '';
             this.phote_one ='';
@@ -221,10 +228,11 @@ export default {
             )
             this.name = '';
             this.description = '';
-            this.price= "";
-            this.license ="",
+            this.price = "";
+            this.license = "",
             this.developer = this.user.name;
-            this.platform= "";
+            this.platform = "";
+            this.company_name = "";
             this.tag_id = '';
             this.category_id = '';
             this.app_icon = '';
