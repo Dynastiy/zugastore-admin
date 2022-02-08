@@ -115,12 +115,12 @@ export default {
             tag_id: '',
             category_id: '',
             company_name: '',
-            app_icon: null,
-            app_file: null,
-            phote_one: null,
-            photo_two: null,
-            photo_three: null,
-            photo_four: null
+            app_icon: "",
+            app_file: "",
+            phote_one: "",
+            photo_two: "",
+            photo_three: "",
+            photo_four: ""
         }
     },
     methods:{
@@ -250,8 +250,6 @@ export default {
         this.getTags();
         this.user = this.$store.getters.getUser
         this.developer = this.user.name;
-
-        
     }
 }
 </script>
