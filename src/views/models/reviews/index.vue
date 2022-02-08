@@ -120,7 +120,8 @@ export default {
             phote_one: "",
             photo_two: "",
             photo_three: "",
-            photo_four: ""
+            photo_four: "",
+            file_size: "",
         }
     },
     methods:{
@@ -197,6 +198,7 @@ export default {
             formData.append("photo_three", this.photo_three);
             formData.append("photo_four", this.photo_four);
             formData.append("company_name", this.company_name)
+            formData.append("file_size", this.file_size)
             let res = await helpers.createProduct(formData);
             console.log(res);
             Swal.fire(
@@ -219,6 +221,7 @@ export default {
             this.photo_two = '';
             this.photo_three = '';
             this.photo_four = '';
+            this.file_size = '';
         } catch (error) {
             console.log(error);
              Swal.fire(
@@ -241,6 +244,7 @@ export default {
             this.photo_two = '';
             this.photo_three = '';
             this.photo_four = '';
+            this.file_size = '';
         }
       }
         
