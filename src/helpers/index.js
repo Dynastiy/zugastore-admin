@@ -17,5 +17,15 @@ export default {
    async createProduct() {
     const response = await axios.get(url + 'create-product');
     return response.data;
-  }
+  },
+  async getTags() {
+    const response = await axios
+      .get(url + 'all-tags/');
+    return response.data;
+  },
+  async getCategories() {
+    const response = await axios
+      .get(url + 'all-categories/');
+    return response.data;
+  },
 };
