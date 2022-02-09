@@ -34,7 +34,7 @@
                   <span class="badge badge-danger p-1" v-else>{{ product.status }}</span>
                 </td>
                 <td>
-                  <button class="view-more-button">View More</button>
+                  <router-link :to=" '/product/'+product.id "> <button class="view-more-button">View More</button> </router-link>
                   <div class="btn-group dropleft ml-2">
                       <button type="button" class="more__icon" data-toggle="dropdown" aria-expanded="false">
                         <!-- Dropleft -->
