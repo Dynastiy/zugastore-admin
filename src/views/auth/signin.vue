@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div class="loading" v-if="loading">
-      <div class="lds-ellipsis"><div></div><div></div><div></div>
+      <div class="loading" v-if="loading ">
+      <div>
+        <div class="lds-ellipsis"><div></div><div></div><div></div>
+      </div>
+      <h6 class="font-weight-bold text-center"> Logging you in ...</h6>
       </div>
     </div>
     <div class="limiter">
@@ -110,6 +113,7 @@ export default {
 }
 
 /* Loader  */
+
 .loading {
   position: fixed;
   min-height: 100vh;

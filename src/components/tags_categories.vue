@@ -298,8 +298,8 @@ export default {
       try {
         const res = await helpers.getIndex();
         console.log(res);
-        this.categories = res.categories;
-        this.tags = res.tags;
+        this.categories = res.categories.data;
+        this.tags = res.tags.data;
       } catch (error) {
         console.log(error);
       }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <div class="row m-t-30" id="main">
       <div class="col-lg-12">
         <!-- <h5 class="font-weight-bold mb-4">{{ currentRouteName }} Apps</h5> -->
@@ -18,7 +17,13 @@
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
+             
+              <div class="d-flex mt-5 justify-content-center" v-if="loading">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+            <tbody v-else>
               <p v-if="none_app" class="font-weight-bold text-danger mt-3">No submissions at the moment  </p>
               <tr v-for="product in products" :key="product.id">
                 <!-- <td>12324233DED  {{ products }} </td> -->
@@ -67,16 +72,19 @@ export default {
       baseUrl: 'https://api.africanapp.store/api/',
       // queryTitle :'',
       none_app: false,
+      loading: false,
     };
   },
   methods: {
     async getProducts() {
+      this.loading = true;
         const res = await axios.get(`${this.baseUrl}admin/get-submissions`);
         console.log(res.data.pending_apps);
-        this.products = res.data.pending_apps;
+        this.products = res.data.pending_apps.data;
         if(res.data.pending_apps.length === 0){
           this.none_app = true;
         }
+        this.loading = false
     },
     approve(product) {
         let payload = { status: "approved"};

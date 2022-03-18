@@ -15,7 +15,7 @@
                     <li> 
                         <router-link to="/dashboard/apps"> 
                             <span> <ion-icon name="apps"></ion-icon> </span>
-                            Apps 
+                            All Apps 
                         </router-link> 
                     </li>
                     <li> 
@@ -31,9 +31,15 @@
                         </router-link> 
                     </li>
                     <li> 
-                        <router-link to="/dashboard/add_app"> 
+                        <router-link to="/dashboard/add-app"> 
                             <span> <ion-icon name="appstore"></ion-icon> </span>
                            Add App
+                        </router-link> 
+                    </li>
+                    <li> 
+                        <router-link to="/dashboard/my-apps"> 
+                            <span> <ion-icon name="appstore"></ion-icon> </span>
+                           My Apps
                         </router-link> 
                     </li>
                     <li> 
